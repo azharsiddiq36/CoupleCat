@@ -13,8 +13,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.tvLupaPassword)
-    TextView tvlupapassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +22,20 @@ public class LoginActivity extends AppCompatActivity {
     }
     @OnClick(R.id.tvLupaPassword)
     protected void tvLupaPassword(View view){
-        Intent gotoforget = new Intent(LoginActivity.this,ForgetPassword.class);
+        Intent gotoforget = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
         startActivity(gotoforget);
+        finish();
+    }
+    @OnClick(R.id.tvRegister)
+    protected void tvRegister(View view){
+        Intent gotoregister = new Intent(LoginActivity.this,NewAccountActivity.class);
+        startActivity(gotoregister);
+        finish();
+    }
+    @OnClick(R.id.btnLogin)
+    protected void btnLogin(View view){
+        Intent gotohome = new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(gotohome);
         finish();
     }
 }

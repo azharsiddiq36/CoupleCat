@@ -21,7 +21,8 @@
         <activity android:name=".Activity.NewAccountActivity" />
         <activity
             android:name=".Activity.MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
+        <activity android:name=".Activity.DetailActivity"></activity>
     </application>
 
 </manifest>

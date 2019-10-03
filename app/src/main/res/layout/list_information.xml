@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragment.InformationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_History"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
     <LinearLayout
-        android:id="@+id/lyInformation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -71,7 +62,7 @@
                 android:layout_height="1dp"
                 android:background="@color/bluePrimaryDark"/>
             <TextView
-                android:layout_gravity="end"
+                android:layout_gravity="end|bottom"
                 android:text="Selengkapnya"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/mregular"
@@ -81,4 +72,5 @@
         </LinearLayout>
     </LinearLayout>
 
-</FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

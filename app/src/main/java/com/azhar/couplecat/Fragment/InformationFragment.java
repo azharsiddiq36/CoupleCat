@@ -1,6 +1,7 @@
 package com.azhar.couplecat.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,18 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.azhar.couplecat.Activity.DetailActivity;
+import com.azhar.couplecat.Activity.ForgetPasswordActivity;
+import com.azhar.couplecat.Activity.LoginActivity;
 import com.azhar.couplecat.R;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link InformationFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link InformationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class InformationFragment extends Fragment {
     @Nullable
     @Override
@@ -38,5 +36,10 @@ public class InformationFragment extends Fragment {
 //                ((MainActivity) getActivity()).getSupportActionBar();
 //        assert actionBar != null;actionBar.setTitle("Profile");
 
+    }
+    @OnClick(R.id.lyInformation)
+    public void lyInformation(View view){
+        Intent gotodetail = new Intent(getActivity(),DetailActivity.class);
+        startActivity(gotodetail);
     }
 }

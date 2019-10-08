@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_overlay_splash"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AddCoupleActivity">
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/emblem_cat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/mmedium"
+        android:text="Daftarkan Kucing Anda"
+        android:textAlignment="center"
+        android:textColor="@color/bluePrimaryDark"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView5"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_white"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/mlight"
+            android:text="Pilih Kucing"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:id="@+id/rvSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input_edit"
+            android:fontFamily="@font/mmedium">
+
+            <Spinner
+                android:id="@+id/spCat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:autofillHints="Select Kucing"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:scrollbars="none" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/mlight"
+            android:text="Pilih Hari"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_weight="7"
+            android:orientation="horizontal">
+
+            <ToggleButton
+                android:textOn="Sen"
+                android:textOff="Sen"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:fontFamily="@font/mlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+
+            <ToggleButton
+                android:textOn="Sel"
+                android:textOff="Sel"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/mlight"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+
+            <ToggleButton
+                android:textOn="Rab"
+                android:textOff="Rab"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:fontFamily="@font/mlight"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+
+            <ToggleButton
+                android:textOn="Kam"
+                android:textOff="Kam"
+                android:fontFamily="@font/mlight"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+
+            <ToggleButton
+                android:textOn="Jum"
+                android:textOff="Jum"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:fontFamily="@font/mlight"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+
+            <ToggleButton
+                android:textOn="Sab"
+                android:textOff="Sab"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:fontFamily="@font/mlight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin"
+                android:layout_marginRight="3dp"/>
+
+            <ToggleButton
+                android:fontFamily="@font/mlight"
+                android:textOn="Min"
+                android:textColor="@drawable/toggle_btn_color_text"
+                android:textOff="Min"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_btn_color"
+                android:text="Senin" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.165">
+
+        <LinearLayout
+            android:id="@+id/lyBack"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_back" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button"
+            android:fontFamily="@font/mmedium"
+            android:text="Daftar"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,79 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.CoupleFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_History"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
-
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:orientation="horizontal"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:layout_weight="1"
-                android:layout_width="110dp"
-                android:scaleType="centerCrop"
-                app:riv_corner_radius="15dp"
-                android:layout_height="130dp"
-                android:src="@drawable/bg_kucing_1" />
-            <LinearLayout
-                android:layout_gravity="center_vertical"
+            <TextView
+                android:id="@+id/textView7"
                 android:layout_width="match_parent"
-                android:layout_weight="4"
-                android:background="@drawable/bg_input_edit"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/mmedium"
+                android:text="Temukan Pasangan Kucing Idamanmu"
+                android:textAlignment="center"
+                android:textColor="@color/bluePrimaryDark"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_info_location"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:layout_height="110dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_male"
-                    android:layout_height="20dp" />
+                android:padding="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7">
+
                 <TextView
-                    android:text="Rasyid"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/mregular"
-                    android:textSize="20sp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-
-                    android:text="Persian Blue"
-                    android:layout_width="match_parent"
-                    android:fontFamily="@font/mregular"
-                    android:textSize="14sp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:text="19.02"
-                    android:layout_gravity="end|bottom"
-                    android:layout_width="wrap_content"
-                    android:fontFamily="@font/mregular"
-                    android:textSize="14sp"
-                    android:layout_height="wrap_content" />
+                    android:text="Pekanbaru, Tampan"
+                    android:textAlignment="center"
+                    android:textColor="@color/whitePrimary"
+                    android:textSize="18dp" />
             </LinearLayout>
-        </LinearLayout>
 
-
-    </android.support.constraint.ConstraintLayout>
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_History"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="24dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="24dp"
+                android:id="@+id/lyBtnCircle"
+                android:layout_marginBottom="70dp"
+                android:background="@drawable/bg_circle_blue_primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <TextView
+                    android:textSize="32dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/whitePrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    <!-- TODO: Update blank fragment layout -->
 </FrameLayout>

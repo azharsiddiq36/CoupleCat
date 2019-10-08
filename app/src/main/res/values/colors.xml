@@ -11,4 +11,10 @@
 
     <color name="colorNavigationIcon">#151b47</color>
     <color name="colorNavigationText">#ffffff</color>
+    <color name="toggle_button_pressed">#12b744</color>
+    <color name="toggle_button_checked">#12b744</color>
+    <color name="toggle_button_unchecked">#f7f7f7</color>
+    <color name="toggle_button_shadow">#b3b3b3</color>
+    <color name="toggle_button_unpressed">#f7f7f7</color>
+
 </resources>

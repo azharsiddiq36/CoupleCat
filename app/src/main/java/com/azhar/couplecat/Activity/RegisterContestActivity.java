@@ -5,14 +5,11 @@ import android.os.Bundle;
 
 import com.azhar.couplecat.R;
 
-import butterknife.ButterKnife;
-
-public class DetailActivity extends AppCompatActivity {
+public class RegisterContestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_register_contest);
     }
 }

@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">CoupleCat</string>
     <string name="username">Username</string>
+    <string name="nama">Nama</string>
+    <string name="nomor">Nomor Handphone</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="repassword">Re-Password</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_chat">Pesan</string>
@@ -11,4 +15,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_my_contest">MyContestActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

@@ -1,8 +1,5 @@
 package com.azhar.couplecat.Fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,18 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.azhar.couplecat.Activity.AddCoupleActivity;
 import com.azhar.couplecat.R;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class CoupleFragment extends Fragment {
-
+public class PersonalDataFotoFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_couple, container, false);
+        View view = inflater.inflate(R.layout.fragment_personal_data_foto, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -35,9 +29,5 @@ public class CoupleFragment extends Fragment {
 //        assert actionBar != null;actionBar.setTitle("Profile");
 
     }
-    @OnClick(R.id.lyBtnCircle)
-    public void lyBtnCircle(View view){
-        Intent gotoaddcouple = new Intent(getActivity(),AddCoupleActivity.class);
-        startActivity(gotoaddcouple);
-    }
+
 }

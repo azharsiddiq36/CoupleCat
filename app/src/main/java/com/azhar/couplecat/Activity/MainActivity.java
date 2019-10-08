@@ -19,6 +19,7 @@ import com.azhar.couplecat.Fragment.InformationFragment;
 import com.azhar.couplecat.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.frameFragment)
@@ -56,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 //        mTextMessage = (TextView) findViewById(R.id.message);
-        loadFragment(new AccountFragment());
+        loadFragment(new HomeFragment());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
        // navigation.setItemIconTintList(Color.parseColor("#151b47"));

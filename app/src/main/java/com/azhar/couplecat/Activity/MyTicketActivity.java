@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.azhar.couplecat.R;
 
-public class MyScheduleActivity extends AppCompatActivity {
+public class MyTicketActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -40,7 +40,7 @@ public class MyScheduleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_schedule);
+        setContentView(R.layout.activity_my_ticket);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +67,7 @@ public class MyScheduleActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my_schedule, menu);
+        getMenuInflater().inflate(R.menu.menu_my_ticket, menu);
         return true;
     }
 
@@ -114,7 +114,7 @@ public class MyScheduleActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_my_schedule, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_my_ticket, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;

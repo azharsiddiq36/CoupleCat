@@ -31,13 +31,22 @@
         <activity android:name=".Activity.MyStoreActivity" />
         <activity android:name=".Activity.ContestActivity" />
         <activity android:name=".Activity.MyFriendsActivity" />
-        <activity android:name=".Activity.MyScheduleActivity" />
         <activity android:name=".Activity.ChangePasswordActivity" />
         <activity android:name=".Activity.AddMyCatActivity" />
         <activity android:name=".Activity.RegisterContestActivity" />
         <activity
             android:name=".Activity.MyContestActivity"
             android:label="@string/title_activity_my_contest"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.AddContestActivity" />
+        <activity
+            android:name=".Activity.MyTicketActivity"
+            android:label="@string/title_activity_my_ticket"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.AllContestActivity" />
+        <activity
+            android:name=".Activity.MyScheduleActivity"
+            android:label="@string/title_activity_my_schedule"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -27,4 +27,19 @@ public class ContestActivity extends AppCompatActivity {
     public void lyBack (View view){
         onBackPressed();
     }
+    @OnClick(R.id.lyBtnDaftar)
+    public void lyBtnDaftar(View view){
+        Intent gotoaddcontest = new Intent(ContestActivity.this,AddContestActivity.class);
+        startActivity(gotoaddcontest);
+    }
+    @OnClick(R.id.lyBtnTicket)
+    public void lyBtnTicket(View view){
+        Intent gototicket = new Intent(ContestActivity.this,MyTicketActivity.class);
+        startActivity(gototicket);
+    }
+    @OnClick(R.id.rlKontes3)
+    public void rlKontes3(View view){
+        Intent gotolistkontes = new Intent(ContestActivity.this,AllContestActivity.class);
+        startActivity(gotolistkontes);
+    }
 }

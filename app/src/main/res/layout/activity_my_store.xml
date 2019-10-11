@@ -14,17 +14,19 @@
         android:id="@+id/clStoreForm"
         tools:context=".Activity.MyAccountActivity">
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/ivBgStore"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
+                android:visibility="gone"
                 android:src="@drawable/bg_kucing_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvChangeStorePhoto"
@@ -38,8 +40,9 @@
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/ivBgStore" />
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +54,7 @@
                 android:padding="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+                app:layout_constraintTop_toBottomOf="@+id/ivBgStore">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -160,6 +163,8 @@
                 android:layout_marginBottom="24dp"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:id="@+id/lyBtnBottom"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -196,5 +201,31 @@
                     android:textColor="#fff"
                     android:textSize="18sp" />
             </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:id="@+id/lyBtnAjukan"
+            android:layout_marginBottom="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/mmedium"
+                android:textColor="@color/bluePrimaryDark"
+                android:textSize="30sp"
+                android:text="Ajukan Toko" />
+        </LinearLayout>
         </android.support.constraint.ConstraintLayout>
 </ScrollView>

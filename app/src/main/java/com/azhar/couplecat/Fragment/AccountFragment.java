@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.azhar.couplecat.Activity.ChangePasswordActivity;
 import com.azhar.couplecat.Activity.LoginActivity;
@@ -20,13 +21,29 @@ import com.azhar.couplecat.Activity.MyStoreActivity;
 import com.azhar.couplecat.Activity.MyWalletActivity;
 import com.azhar.couplecat.Activity.PersonalDataActivity;
 import com.azhar.couplecat.R;
+import com.azhar.couplecat.Rest.CombineApi;
+import com.azhar.couplecat.Rest.CoupleCatInterface;
+import com.azhar.couplecat.Utils.SessionManager;
 
+import java.util.HashMap;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
 public class AccountFragment extends Fragment {
-
+    SessionManager sessionManager;
+    CoupleCatInterface coupleCatInterface;
+    @BindView(R.id.tvName)
+    TextView tvName;
+    @BindView(R.id.tvNumber)
+    TextView tvNumber;
+    @BindView(R.id.tvSaldo)
+    TextView tvSaldo;
+    @BindView(R.id.tvPersonal)
+    TextView tvPersonal;
+    HashMap<String,String> map;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +55,14 @@ public class AccountFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sessionManager = new SessionManager(getContext());
+        map = sessionManager.getDetailsLoggin();
+        coupleCatInterface = CombineApi.getApiService();
+        if (map.get(sessionManager.KEY_PENGGUNA_VALIDASI).equals("sudah")){
+            tvPersonal.setVisibility(View.INVISIBLE);
+        }
+        tvName.setText(map.get(sessionManager.KEY_PENGGUNA_NAMA));
+        tvNumber.setText(map.get(sessionManager.KEY_PENGGUNA_NOMOR));
 //        android.support.v7.app.ActionBar actionBar =
 //                ((MainActivity) getActivity()).getSupportActionBar();
 //        assert actionBar != null;actionBar.setTitle("Profile");
@@ -91,6 +116,7 @@ public class AccountFragment extends Fragment {
     }
     @OnClick(R.id.lyBtnLogout)
     public void lyBtnLogout(View view){
+        sessionManager.logout();
         Intent gotologin = new Intent(getActivity(),LoginActivity.class);
         startActivity(gotologin);
         getActivity().finish();

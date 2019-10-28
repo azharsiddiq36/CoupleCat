@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/mlight"
-            android:text="Username"
+            android:text="Username/Email"
             android:textSize="20sp" />
 
         <EditText
@@ -55,7 +55,7 @@
             android:height="50dp"
             android:background="@drawable/bg_input_edit"
             android:fontFamily="@font/mmedium"
-            android:hint="@string/username"
+            android:hint="Username/Email"
             android:lines="1"
             android:paddingLeft="12dp"
             android:textSize="20sp" />

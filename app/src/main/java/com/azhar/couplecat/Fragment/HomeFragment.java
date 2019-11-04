@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.azhar.couplecat.Activity.MainActivity;
 import com.azhar.couplecat.Adapter.SliderAdapter;
 import com.azhar.couplecat.Adapter.ViewPagerAdapter;
 import com.azhar.couplecat.R;
@@ -29,6 +30,11 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        android.support.v7.app.ActionBar actionBar =
+                ((MainActivity) getActivity()).getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_overlay_splash));
+        actionBar.setTitle("Home");
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
         return view;

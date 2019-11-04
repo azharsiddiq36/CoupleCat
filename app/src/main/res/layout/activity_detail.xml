@@ -41,6 +41,7 @@
                 android:layout_marginBottom="14dp"
                 android:layout_gravity="end|bottom"
                 android:text="Abysinian"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/mmedium"
                 android:textSize="30sp"
@@ -88,6 +89,7 @@
                     android:fontFamily="@font/mregular"
                     android:textSize="14sp"
                     android:lineHeight="24dp"
+android:id="@+id/tvDescription"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
@@ -136,6 +138,7 @@
                         android:fontFamily="@font/mregular"
                         android:textSize="14sp"
                         android:layout_weight="3"
+                        android:id="@+id/tvLifeSpan"
                         android:lineHeight="24dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -165,6 +168,7 @@
                         android:fontFamily="@font/mregular"
                         android:textSize="14sp"
                         android:layout_weight="3"
+                        android:id="@+id/tvWeight"
                         android:lineHeight="24dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -190,6 +194,7 @@
                         android:layout_height="wrap_content" />
                     <TextView
                         android:text="Egypt"
+                        android:id="@+id/tvOrigin"
                         android:layout_width="wrap_content"
                         android:fontFamily="@font/mregular"
                         android:textSize="14sp"
@@ -206,6 +211,7 @@
                     android:layout_width="match_parent"
                     android:fontFamily="@font/mregular"
                     android:textSize="10sp"
+                    android:id="@+id/tvWikipediaUrl"
                     android:lineHeight="24dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>

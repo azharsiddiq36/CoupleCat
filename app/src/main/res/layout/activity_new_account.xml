@@ -140,6 +140,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/mlight"
+                android:text="Nomor Handphone"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etNomor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:height="50dp"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:hint="Nomor"
+                android:lines="1"
+                android:inputType="number"
+                android:paddingLeft="12dp"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
                 android:text="Password"
                 android:textSize="20sp" />
 

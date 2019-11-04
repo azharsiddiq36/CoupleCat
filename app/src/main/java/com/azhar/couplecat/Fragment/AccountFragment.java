@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.azhar.couplecat.Activity.ChangePasswordActivity;
 import com.azhar.couplecat.Activity.LoginActivity;
@@ -20,6 +22,7 @@ import com.azhar.couplecat.Activity.MyScheduleActivity;
 import com.azhar.couplecat.Activity.MyStoreActivity;
 import com.azhar.couplecat.Activity.MyWalletActivity;
 import com.azhar.couplecat.Activity.PersonalDataActivity;
+import com.azhar.couplecat.Model.ResponsePengguna;
 import com.azhar.couplecat.R;
 import com.azhar.couplecat.Rest.CombineApi;
 import com.azhar.couplecat.Rest.CoupleCatInterface;
@@ -30,6 +33,9 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class AccountFragment extends Fragment {
@@ -43,6 +49,10 @@ public class AccountFragment extends Fragment {
     TextView tvSaldo;
     @BindView(R.id.tvPersonal)
     TextView tvPersonal;
+    @BindView(R.id.tvNotif)
+    TextView tvNotif;
+    @BindView(R.id.lyNotif)
+    LinearLayout lyNotif;
     HashMap<String,String> map;
     @Nullable
     @Override
@@ -58,16 +68,42 @@ public class AccountFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         map = sessionManager.getDetailsLoggin();
         coupleCatInterface = CombineApi.getApiService();
+        getDetailAccount();
         if (map.get(sessionManager.KEY_PENGGUNA_VALIDASI).equals("sudah")){
             tvPersonal.setVisibility(View.INVISIBLE);
         }
+
         tvName.setText(map.get(sessionManager.KEY_PENGGUNA_NAMA));
         tvNumber.setText(map.get(sessionManager.KEY_PENGGUNA_NOMOR));
-//        android.support.v7.app.ActionBar actionBar =
-//                ((MainActivity) getActivity()).getSupportActionBar();
-//        assert actionBar != null;actionBar.setTitle("Profile");
-
     }
+
+    private void getDetailAccount() {
+        coupleCatInterface.detailAccount(map.get(sessionManager.KEY_PENGGUNA_ID)).enqueue(new Callback<ResponsePengguna>() {
+            @Override
+            public void onResponse(Call<ResponsePengguna> call, Response<ResponsePengguna> response) {
+                int status = response.body().getStatus();
+                if (status == 200){
+                    tvSaldo.setText("Rp. "+response.body().getData().getPenggunaSaldo().toString());
+                    if (Integer.parseInt(response.body().getMessage())>0){
+                        tvNotif.setText(response.body().getMessage().toString());
+                    }
+                    else{
+                        lyNotif.setVisibility(View.INVISIBLE);
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    lyNotif.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponsePengguna> call, Throwable t) {
+
+            }
+        });
+    }
+
     @OnClick(R.id.tvPersonal)
     public void tvPersonal(View view){
         Intent gotopersonal = new Intent(getActivity(),PersonalDataActivity.class);

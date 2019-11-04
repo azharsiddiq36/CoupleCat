@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.azhar.couplecat.Activity.AddCoupleActivity;
+import com.azhar.couplecat.Activity.MainActivity;
 import com.azhar.couplecat.R;
 
 import butterknife.ButterKnife;
@@ -22,6 +23,11 @@ public class CoupleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        android.support.v7.app.ActionBar actionBar =
+                ((MainActivity) getActivity()).getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_overlay_splash));
+        actionBar.setTitle("Pasangan");
         View view = inflater.inflate(R.layout.fragment_couple, container, false);
         ButterKnife.bind(this, view);
         return view;

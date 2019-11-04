@@ -1,7 +1,6 @@
 package com.azhar.couplecat.Fragment;
 
-import android.content.Context;
-import android.net.Uri;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,23 +8,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.azhar.couplecat.Activity.MainActivity;
 import com.azhar.couplecat.R;
+import com.squareup.picasso.Picasso;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
+public class PersonalDataSuccessFragment extends Fragment {
 
-public class ChatFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        android.support.v7.app.ActionBar actionBar =
-                ((MainActivity) getActivity()).getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_overlay_splash));
-        actionBar.setTitle("Chatting");
-        View view = inflater.inflate(R.layout.fragment_chat, container, false);
+        View view = inflater.inflate(R.layout.fragment_personal_data_success, container, false);
         ButterKnife.bind(this, view);
         return view;
     }
@@ -38,4 +34,5 @@ public class ChatFragment extends Fragment {
 //        assert actionBar != null;actionBar.setTitle("Profile");
 
     }
+
 }

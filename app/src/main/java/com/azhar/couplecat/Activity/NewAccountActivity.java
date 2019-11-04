@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,10 +30,14 @@ public class NewAccountActivity extends AppCompatActivity {
     EditText etNama;
     @BindView(R.id.etPassword)
     EditText etPassword;
+    @BindView(R.id.etNomor)
+    EditText etNomor;
     SessionManager sessionManager;
     CoupleCatInterface coupleCatInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
         ButterKnife.bind(this);
@@ -47,12 +52,13 @@ public class NewAccountActivity extends AppCompatActivity {
     }
     @OnClick(R.id.btnDaftar)
     protected void btnDaftar(View view){
-        String nama,username,email,password;
+        String nama,username,email,password,nomor;
         nama = etNama.getText().toString();
         username = etUsername.getText().toString();
         password = etPassword.getText().toString();
         email = etEmail.getText().toString();
-        coupleCatInterface.register(nama,username,email,password).enqueue(new Callback<ResponsePengguna>() {
+        nomor = etNomor.getText().toString();
+        coupleCatInterface.register(nama,username,email,password,nomor).enqueue(new Callback<ResponsePengguna>() {
             @Override
             public void onResponse(Call<ResponsePengguna> call, Response<ResponsePengguna> response) {
                 int status = response.body().getStatus();

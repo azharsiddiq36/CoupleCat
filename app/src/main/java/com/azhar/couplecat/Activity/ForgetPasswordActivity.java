@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     EditText etEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         sessionManager = new SessionManager(getApplicationContext());
         coupleCatInterface = CombineApi.getApiService();

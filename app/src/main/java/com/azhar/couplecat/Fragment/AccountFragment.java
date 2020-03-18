@@ -5,15 +5,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.azhar.couplecat.Activity.ChangePasswordActivity;
 import com.azhar.couplecat.Activity.LoginActivity;
+import com.azhar.couplecat.Activity.MainActivity;
 import com.azhar.couplecat.Activity.MyAccountActivity;
 import com.azhar.couplecat.Activity.MyCatActivity;
 import com.azhar.couplecat.Activity.ContestActivity;
@@ -27,6 +30,7 @@ import com.azhar.couplecat.R;
 import com.azhar.couplecat.Rest.CombineApi;
 import com.azhar.couplecat.Rest.CoupleCatInterface;
 import com.azhar.couplecat.Utils.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -36,6 +40,8 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.azhar.couplecat.Rest.CombineApi.img_url;
 
 
 public class AccountFragment extends Fragment {
@@ -51,12 +57,20 @@ public class AccountFragment extends Fragment {
     TextView tvPersonal;
     @BindView(R.id.tvNotif)
     TextView tvNotif;
+    @BindView(R.id.ivFotoProfile)
+    ImageView ivFotoProfile;
     @BindView(R.id.lyNotif)
     LinearLayout lyNotif;
     HashMap<String,String> map;
+    String TAG = "FIX";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        android.support.v7.app.ActionBar actionBar =
+                ((MainActivity) getActivity()).getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_overlay_splash));
+        actionBar.setTitle("Profile");
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         ButterKnife.bind(this, view);
         return view;
@@ -72,9 +86,9 @@ public class AccountFragment extends Fragment {
         if (map.get(sessionManager.KEY_PENGGUNA_VALIDASI).equals("sudah")){
             tvPersonal.setVisibility(View.INVISIBLE);
         }
-
         tvName.setText(map.get(sessionManager.KEY_PENGGUNA_NAMA));
         tvNumber.setText(map.get(sessionManager.KEY_PENGGUNA_NOMOR));
+        getFoto(map.get(sessionManager.KEY_PENGGUNA_FOTO));
     }
 
     private void getDetailAccount() {
@@ -156,5 +170,14 @@ public class AccountFragment extends Fragment {
         Intent gotologin = new Intent(getActivity(),LoginActivity.class);
         startActivity(gotologin);
         getActivity().finish();
+    }
+    private void getFoto(String foto) {
+            Picasso.get()
+                    .load(img_url+foto)
+                    .placeholder(android.R.drawable.sym_def_app_icon)
+                    .error(android.R.drawable.sym_def_app_icon)
+                    .into(ivFotoProfile);
+
+
     }
 }

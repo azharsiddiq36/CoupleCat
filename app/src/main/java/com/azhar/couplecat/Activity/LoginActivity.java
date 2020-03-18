@@ -15,6 +15,7 @@ import com.azhar.couplecat.R;
 import com.azhar.couplecat.Rest.CombineApi;
 import com.azhar.couplecat.Rest.CoupleCatInterface;
 import com.azhar.couplecat.Utils.SessionManager;
+import com.azhar.couplecat.Utils.SweetAllert;
 
 import java.util.HashMap;
 
@@ -27,12 +28,12 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     SessionManager sessionManager;
-    ProgressDialog loading;
     CoupleCatInterface coupleCatInterface;
     @BindView(R.id.etPassword)
     EditText etPassword;
     @BindView(R.id.etUsername)
     EditText etUsername;
+    SweetAllert alert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         sessionManager = new SessionManager(LoginActivity.this);
+        alert = new SweetAllert(LoginActivity.this);
         coupleCatInterface = CombineApi.getApiService();
         if(sessionManager.isLogin()){
             startActivity(new Intent(LoginActivity.this, MainActivity.class)
@@ -65,19 +67,8 @@ public class LoginActivity extends AppCompatActivity {
     }
     @OnClick(R.id.btnLogin)
     protected void btnLogin(View view){
-        loading = new ProgressDialog(LoginActivity.this);
-        loading.setMax(100);
-        loading.setTitle("Harap Tunggu");
-        loading.setMessage("Loading...");
-        loading.setProgressStyle(loading.STYLE_SPINNER);
-        loading.show();
-        loading.setCancelable(false);
+        alert.loadingAllert("Sedang Memeriksa Data");
         authLogin();
-        /*
-        Intent gotohome = new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(gotohome);
-        finish();
-        */
     }
 
     private void authLogin() {
@@ -123,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    loading.dismiss();
+                    alert.dismissloadingAllert();
                     Toast.makeText(LoginActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }

@@ -14,7 +14,7 @@
     tools:context=".Activity.MyAccountActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/ivFoto"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvChangeFotoProfil"
+        android:id="@+id/tvChangeFotoProfile"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:textSize="16sp"
@@ -39,7 +39,7 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivFoto" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -53,7 +53,7 @@
         android:padding="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+        app:layout_constraintTop_toBottomOf="@+id/ivFoto">
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,6 +86,7 @@
 
         <EditText
             android:id="@+id/etNomor"
+            android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
@@ -107,11 +108,11 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:maxLines="3"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bg_input_edit"
             android:fontFamily="@font/mmedium"
             android:hint="@string/email"
-            android:lines="1"
             android:paddingLeft="12dp"
             android:textSize="20sp" />
     </LinearLayout>

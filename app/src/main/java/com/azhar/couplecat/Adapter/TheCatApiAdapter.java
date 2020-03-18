@@ -74,20 +74,14 @@ public class TheCatApiAdapter extends RecyclerView.Adapter<TheCatApiAdapter.View
     public void onBindViewHolder(final ViewHolder holder, int pofgdion) {
         final Information Information = rvData.get(pofgdion);
         holder.tvName.setText(Information.getName());
-        holder.tvDescription.setText(Information.getDescription());
+        holder.tvDescription.setText(Information.getDescription().substring(0,Math.min(Information.getDescription().length(),115))+"...");
         holder.tvCountry.setText(Information.getOrigin());
-        /*
-        String gambar = Information.getInformationFoto();
-        if (gambar.equals("")){
-            gambar = "assets/images/user.png";
-        }
 
         Picasso.get()
-                .load(img_url+gambar)
+                .load(img_url+Information.getName().toLowerCase()+".jpg")
                 .placeholder(android.R.drawable.sym_def_app_icon)
                 .error(android.R.drawable.sym_def_app_icon)
-                .into(holder.imgDoctor);
-*/
+                .into(holder.ivPicture);
         holder.lyContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,78 +93,7 @@ public class TheCatApiAdapter extends RecyclerView.Adapter<TheCatApiAdapter.View
                 gotodescription.putExtra("lifespan",Information.getLifeSpan());
                 gotodescription.putExtra("weight",Information.getWeight().getImperial());
                 context.startActivity(gotodescription);
-/*
-                WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-                Display display = wm.getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-                int width = size.x;
-                int height = size.y;
-                LayoutInflater inflater = (LayoutInflater)
-                        context.getSystemService(LAYOUT_INFLATER_SERVICE);
-                final View popupView = inflater.inflate(R.layout.detail_Information, null);
-                ImageView foto = (ImageView)popupView.findViewById(R.id.InformationFoto);
-                ImageView close = (ImageView)popupView.findViewById(R.id.btnClose);
-                TextView tvNama,tvBidang,tvInformationAlamat,tvInformationLahir,tvInformationNomor;
-                Button tutup;
-                sessionManager = new SessionManager(context);
-                tvNama = (TextView)popupView.findViewById(R.id.tvNama);
-                tvBidang = (TextView)popupView.findViewById(R.id.tvBidang);
-                tvInformationAlamat = (TextView)popupView.findViewById(R.id.tvInformationAlamat);
-                tvInformationLahir = (TextView)popupView.findViewById(R.id.tvInformationLahir);
-                tvInformationNomor = (TextView)popupView.findViewById(R.id.tvInformationNomor);
-                HashMap<String,String> map = sessionManager.getDetailsLoggin();
-                final PopupWindow popupWindow = new PopupWindow(popupView);
-                popupWindow.setWidth(width);
-                popupWindow.setAnimationStyle(android.R.style.Animation_Translucent);
-//                popupWindow.setAnimationStyle(android.R.style.Animation_InputMethod); dari bawah
-//                popupWindow.setAnimationStyle(android.R.style.Animation_Toast); fadein,bounce
-//                popupWindow.setAnimationStyle(android.R.style.Animation_Dialog); fadein,fadeout
-//                popupWindow.setAnimationStyle(android.R.style.Animation_Translucent); dari samping kanan
-                popupWindow.setHeight(height-200);
-                popupWindow.setFocusable(true);
-                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
-                tvNama.setText(Information.getInformationNama());
-                tvBidang.setText(Information.getInformationBidang());
-                tvInformationLahir.setText(Information.getInformationTglLahir());
-                tvInformationAlamat.setText(Information.getInformationAlamat());
-                tvInformationNomor.setText("0"+Information.getInformationNomor());
-
-                close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        popupWindow.dismiss();
-                    }
-                });
-                LinearLayout lyInflater = (LinearLayout)popupView.findViewById(R.id.lyInflater);
-                lyInflater.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popupWindow.dismiss();
-                    }
-                });
-                tutup = (Button) popupView.findViewById(R.id.btnTutup);
-                tutup.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popupWindow.dismiss();
-                    }
-                });
-                String gambar = "";
-                if (Information.getInformationFoto().equals("")){
-                    gambar = "assets/images/user.png";
-                }
-                else{
-                    gambar = Information.getInformationFoto();
-                }
-
-                Picasso.get()
-                        .load(img_url+gambar)
-                        .placeholder(android.R.drawable.sym_def_app_icon)
-                        .error(android.R.drawable.sym_def_app_icon)
-                        .into(foto);
-            */
             }
 
         });

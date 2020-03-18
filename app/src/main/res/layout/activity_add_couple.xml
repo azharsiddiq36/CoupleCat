@@ -70,7 +70,6 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="1dp"
                 android:layout_marginBottom="1dp"
-                android:autofillHints="Select Kucing"
                 android:background="@drawable/bg_input_edit"
                 android:fontFamily="@font/mmedium"
                 android:scrollbars="none" />
@@ -93,6 +92,7 @@
 
             <ToggleButton
                 android:textOn="Sen"
+                android:id="@+id/tgSenin"
                 android:textOff="Sen"
                 android:textColor="@drawable/toggle_btn_color_text"
                 android:fontFamily="@font/mlight"
@@ -106,6 +106,7 @@
             <ToggleButton
                 android:textOn="Sel"
                 android:textOff="Sel"
+                android:id="@+id/tgSelasa"
                 android:textColor="@drawable/toggle_btn_color_text"
                 android:layout_marginRight="3dp"
                 android:layout_width="match_parent"
@@ -116,6 +117,7 @@
                 android:text="Senin" />
 
             <ToggleButton
+                android:id="@+id/tgRabu"
                 android:textOn="Rab"
                 android:textOff="Rab"
                 android:textColor="@drawable/toggle_btn_color_text"
@@ -128,6 +130,7 @@
                 android:text="Senin" />
 
             <ToggleButton
+                android:id="@+id/tgKamis"
                 android:textOn="Kam"
                 android:textOff="Kam"
                 android:fontFamily="@font/mlight"
@@ -141,6 +144,7 @@
 
             <ToggleButton
                 android:textOn="Jum"
+                android:id="@+id/tgJumat"
                 android:textOff="Jum"
                 android:textColor="@drawable/toggle_btn_color_text"
                 android:fontFamily="@font/mlight"
@@ -153,6 +157,7 @@
 
             <ToggleButton
                 android:textOn="Sab"
+                android:id="@+id/tgSabtu"
                 android:textOff="Sab"
                 android:textColor="@drawable/toggle_btn_color_text"
                 android:fontFamily="@font/mlight"
@@ -164,6 +169,7 @@
                 android:layout_marginRight="3dp"/>
 
             <ToggleButton
+                android:id="@+id/tgMinggu"
                 android:fontFamily="@font/mlight"
                 android:textOn="Min"
                 android:textColor="@drawable/toggle_btn_color_text"
@@ -185,7 +191,6 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-
         android:weightSum="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

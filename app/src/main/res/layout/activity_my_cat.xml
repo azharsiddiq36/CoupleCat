@@ -35,14 +35,15 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_History"
+        android:id="@+id/rv_mycat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
         android:scrollbars="none"
+        android:paddingBottom="200dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

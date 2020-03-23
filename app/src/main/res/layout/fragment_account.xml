@@ -138,31 +138,6 @@
                 android:layout_height="1dp"
                 android:background="@color/bluePrimaryDark"/>
             <LinearLayout
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/lyBtnMyFriend"
-                android:background="@drawable/bg_input_edit"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/teman"/>
-                <TextView
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/mlight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Teman"
-                    android:id="@+id/tvTeman"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/bluePrimaryDark"/>
-            <LinearLayout
                 android:id="@+id/lyBtnMyStore"
                 android:padding="10dp"
                 android:layout_width="match_parent"

@@ -1,6 +1,10 @@
 package com.azhar.couplecat.Rest;
 
 import com.azhar.couplecat.Model.Information;
+import com.azhar.couplecat.Model.ResponseCouple;
+import com.azhar.couplecat.Model.ResponseKontak;
+import com.azhar.couplecat.Model.ResponseLastMessage;
+import com.azhar.couplecat.Model.ResponseMessage;
 import com.azhar.couplecat.Model.ResponseMyCat;
 import com.azhar.couplecat.Model.ResponsePasangan;
 import com.azhar.couplecat.Model.ResponsePengguna;
@@ -89,4 +93,21 @@ public interface CoupleCatInterface {
                                           @Field("pengguna_desa")String pengguna_desa,
                                           @Field("pengguna_latitude")String pengguna_latitude,
                                           @Field("pengguna_longitude")String pengguna_longitude);
+    @FormUrlEncoded
+    @POST("api/pasangan/list")
+    Call<ResponseCouple> getListCouple(@Field("pasangan_kucing_jenis") String jenis,
+                                       @Field("pasangan_provinsi") String provinsi,
+                                       @Field("pasangan_kabupaten")String kabupaten,
+                                       @Field("pasangan_kecamatan")String kecamatan,
+                                       @Field("pasangan_desa")String desa);
+    @FormUrlEncoded
+    @POST("api/pesan/getconversation")
+    Call<ResponseMessage> getConversation(@Field("chatting_kontak") String chatting_kontak);
+    @FormUrlEncoded
+    @POST("api/pesan/lastconversation")
+    Call<ResponseLastMessage> getLastConversation(@Field("kontak_id") String kontak_id);
+    @FormUrlEncoded
+    @POST("api/kontak/getkontak")
+    Call<ResponseKontak> getKontak(@Field("pengguna_id") String pengguna_id);
+
 }

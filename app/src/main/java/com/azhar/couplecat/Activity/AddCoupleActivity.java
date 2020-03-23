@@ -92,12 +92,15 @@ public class AddCoupleActivity extends AppCompatActivity {
     public void btnAdd(View view) {
         String day = "";
         for (int i = 0;i<hari.length;i++){
-            if (hari[i] != null){
-                if (i == hari.length-1){
-                    day += hari[i];
+            if (hari[i] == null){
+                continue;
+            }
+            else{
+                if (day.equals("")){
+                    day = hari[i];
                 }
                 else{
-                    day += hari[i]+",";
+                    day = day+","+hari[i];
                 }
             }
         }

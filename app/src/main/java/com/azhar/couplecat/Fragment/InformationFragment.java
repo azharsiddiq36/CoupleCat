@@ -86,15 +86,11 @@ public class InformationFragment extends Fragment {
             public void onResponse(Call<ArrayList<Information>> call, Response<ArrayList<Information>> response) {
                 progressDialog.hide();
                 Log.d(TAG, "onResponse: "+response.body().get(1).getName());
-//                Log.d(TAG, "onResponse: "+response.raw());
                 theCatApi = (ArrayList)response.body();
-//                theCatApiAdapter = response.body().getAltNames();
                 theCatApiAdapter = new TheCatApiAdapter(getActivity(),theCatApi);
-                //TheCatApiAdapter.getFilter().filter("");
                 rvInformation.setAdapter(theCatApiAdapter);
                 theCatApiAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onFailure(Call<ArrayList<Information>> call, Throwable t) {
                 Log.d(TAG, "onFailure: "+t.toString());
@@ -103,13 +99,14 @@ public class InformationFragment extends Fragment {
             }
         });
 
-
     }
-//    @OnClick(R.id.lyInformation)
-//    public void lyInformation(View view){
-//        Intent gotodetail = new Intent(getActivity(),DetailActivity.class);
-//        startActivity(gotodetail);
-//    }
+    /*
+    @OnClick(R.id.lyInformation)
+    public void lyInformation(View view){
+        Intent gotodetail = new Intent(getActivity(),DetailActivity.class);
+        startActivity(gotodetail);
+    }
+    */
     /*
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {

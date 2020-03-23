@@ -134,11 +134,6 @@ public class AccountFragment extends Fragment {
         Intent gotowallet = new Intent(getActivity(),MyWalletActivity.class);
         startActivity(gotowallet);
     }
-    @OnClick(R.id.lyBtnMyFriend)
-    public void lyBtnMyFriend(View view){
-        Intent gotofriend = new Intent(getActivity(),MyFriendsActivity.class);
-        startActivity(gotofriend);
-    }
     @OnClick(R.id.lyBtnMyAccount)
     public void lyBtnMyAccount(View view){
         Intent gotoaccount = new Intent(getActivity(),MyAccountActivity.class);

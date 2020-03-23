@@ -2,22 +2,14 @@ package com.azhar.couplecat.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Point;
-import android.media.Image;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.azhar.couplecat.Model.MyCat;
@@ -27,13 +19,11 @@ import com.azhar.couplecat.Utils.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static com.azhar.couplecat.Rest.CombineApi.img_url;
 
-public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> implements Filterable {
+public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> implements Filterable {
    private ArrayList<MyCat> rvData;
     Context context;
     Dialog myDialog;
@@ -42,7 +32,7 @@ public class MyCatAdapter extends RecyclerView.Adapter<MyCatAdapter.ViewHolder> 
     SessionManager sessionManager;
     private List<ResponseMyCat> data;
 
-    public MyCatAdapter(Context context, ArrayList<MyCat> inputData) {
+    public MessageAdapter(Context context, ArrayList<MyCat> inputData) {
         this.context = context;
 
         rvData = inputData;

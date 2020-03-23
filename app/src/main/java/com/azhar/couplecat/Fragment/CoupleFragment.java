@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,12 +29,17 @@ import android.widget.Toast;
 
 import com.azhar.couplecat.Activity.AddCoupleActivity;
 import com.azhar.couplecat.Activity.MainActivity;
+import com.azhar.couplecat.Activity.MyCatActivity;
+import com.azhar.couplecat.Adapter.CoupleAdapter;
+import com.azhar.couplecat.Model.Couple;
+import com.azhar.couplecat.Model.ResponseCouple;
 import com.azhar.couplecat.Model.ResponsePasangan;
 import com.azhar.couplecat.R;
 import com.azhar.couplecat.Rest.CombineApi;
 import com.azhar.couplecat.Rest.CoupleCatInterface;
 import com.azhar.couplecat.Utils.SessionManager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -62,7 +68,10 @@ public class CoupleFragment extends Fragment {
     String desa;
     String latitude;
     String longitude;
+    String jenis;
     String TAG = "Kambing";
+    CoupleAdapter coupleAdapter;
+    RecyclerView.LayoutManager layoutManager;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -82,18 +91,37 @@ public class CoupleFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         coupleCatInterface = CombineApi.getApiService();
         map = sessionManager.getDetailsLoggin();
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        rvCouple.setLayoutManager(layoutManager);
         loadCurrentLocation();
         updateDB();
         loadData();
     }
 
     private void loadData() {
+        Call<ResponseCouple> responseCoupleCall = coupleCatInterface.getListCouple(jenis,provinsi,kabupaten,kecamatan,desa);
+        responseCoupleCall.enqueue(new Callback<ResponseCouple>() {
+            @Override
+            public void onResponse(Call<ResponseCouple> call, Response<ResponseCouple> response) {
+                if (response.body().getStatus() == 200){
+                    coupleAdapter = new CoupleAdapter(getContext(), (ArrayList<Couple>) response.body().getData());
+                    rvCouple.setAdapter(coupleAdapter);
+                    coupleAdapter.notifyDataSetChanged();
+                    Toast.makeText(getContext(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                else if (response.body().getStatus() == 403){
+                    Toast.makeText(getContext(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResponseCouple> call, Throwable t) {
+                Toast.makeText(getContext(), ""+t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void updateDB() {
-
-        Log.d(TAG, "updateDB: "+provinsi);
         Call<ResponsePasangan> responseLocationCall = coupleCatInterface.updateLocation(
                 map.get(sessionManager.KEY_PENGGUNA_ID),
                 provinsi,

@@ -1,6 +1,7 @@
 package com.azhar.couplecat.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.azhar.couplecat.Activity.MainActivity;
+import com.azhar.couplecat.Activity.PostinganActivity;
 import com.azhar.couplecat.Adapter.SliderAdapter;
 import com.azhar.couplecat.Adapter.ViewPagerAdapter;
 import com.azhar.couplecat.R;
@@ -24,6 +26,7 @@ import com.smarteist.autoimageslider.SliderView;
 
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class HomeFragment extends Fragment {
     SliderView sliderView;
@@ -46,9 +49,7 @@ public class HomeFragment extends Fragment {
         sliderView = view.findViewById(R.id.imageSlider);
         final SliderAdapter adapter = new SliderAdapter(getContext());
         adapter.setCount(5);
-
         sliderView.setSliderAdapter(adapter);
-
         sliderView.setIndicatorAnimation(IndicatorAnimations.SLIDE); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.CUBEINROTATIONTRANSFORMATION);
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
@@ -62,9 +63,10 @@ public class HomeFragment extends Fragment {
                 sliderView.setCurrentPagePosition(position);
             }
         });
-//        android.support.v7.app.ActionBar actionBar =
-//                ((MainActivity) getActivity()).getSupportActionBar();
-//        assert actionBar != null;actionBar.setTitle("Profile");
-
+    }
+    @OnClick(R.id.lyPostingan)
+    protected void lyPostingan(View view){
+        Intent i = new Intent(getContext(),PostinganActivity.class);
+        startActivity(i);
     }
 }

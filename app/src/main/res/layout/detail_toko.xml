@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/lyInflater"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="15dp"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="#F1F8E9">
+                <ImageView
+                    android:id="@+id/btnClose"
+                    android:layout_width="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_close_black_24dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:background="@drawable/bg_overlay_splash"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/mmedium"
+                        android:background="@drawable/bg_white"
+                        android:id="@+id/tvNama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="23dp"
+                        android:text="Rincian"
+                        android:padding="4dp"
+                        android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/tokoFoto"
+                        android:layout_marginBottom="24dp"
+                        android:src="@mipmap/ic_launcher"/>
+
+
+                    <LinearLayout
+                        android:background="@drawable/bg_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+                        <TextView
+                            android:text="Deskripsi"
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/mregular"
+                            android:textSize="28sp"
+                            android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_height="1dp"
+                            android:background="@drawable/bg_input_edit"/>
+                        <TextView
+                            android:text="The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals."
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/mregular"
+                            android:textSize="14sp"
+                            android:lineHeight="24dp"
+                            android:id="@+id/tvDescription"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@drawable/bg_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="24dp"
+                        android:padding="24dp">
+                        <TextView
+                            android:text="Tentang"
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/mregular"
+                            android:textSize="28sp"
+                            android:layout_height="wrap_content" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_margin="5dp"
+                            android:layout_height="1dp"
+                            android:background="@drawable/bg_input_edit"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_phone_black_24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:fontFamily="@font/mregular"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Nomor"
+                                android:id="@+id/tvNomor"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_home_black_24dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=":"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:fontFamily="@font/mregular"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="alamat"
+                                android:id="@+id/tvalamat"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnTutup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:text="Tutup"
+                        android:textSize="18dp"
+                        android:background="@drawable/bg_button"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="20dp"
+                        android:textColor="#fff"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -2,12 +2,16 @@ package com.azhar.couplecat.Rest;
 
 import com.azhar.couplecat.Model.Information;
 import com.azhar.couplecat.Model.ResponseCouple;
+import com.azhar.couplecat.Model.ResponseKomentar;
 import com.azhar.couplecat.Model.ResponseKontak;
 import com.azhar.couplecat.Model.ResponseLastMessage;
 import com.azhar.couplecat.Model.ResponseMessage;
 import com.azhar.couplecat.Model.ResponseMyCat;
 import com.azhar.couplecat.Model.ResponsePasangan;
 import com.azhar.couplecat.Model.ResponsePengguna;
+import com.azhar.couplecat.Model.ResponsePostingan;
+import com.azhar.couplecat.Model.ResponseStore;
+import com.azhar.couplecat.Model.ResponseToko;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -109,5 +113,69 @@ public interface CoupleCatInterface {
     @FormUrlEncoded
     @POST("api/kontak/getkontak")
     Call<ResponseKontak> getKontak(@Field("pengguna_id") String pengguna_id);
-
+    @FormUrlEncoded
+    @POST("api/toko/get")
+    Call<ResponseStore> getToko(@Field("toko_pengguna_id")String pengguna_id);
+    @Multipart
+    @POST("api/toko/tambah")
+    Call<ResponseToko> addToko(@Part MultipartBody.Part image,
+                               @Part("toko_pengguna_id")RequestBody pengguna_id,
+                               @Part("toko_nama")RequestBody toko_nama,
+                               @Part("toko_latitude")RequestBody latitude,
+                               @Part("toko_longitude")RequestBody longitude,
+                               @Part("toko_provinsi")RequestBody provinsi,
+                               @Part("toko_kabupaten")RequestBody kabupaten,
+                               @Part("toko_kecamatan")RequestBody kecamatan,
+                               @Part("toko_desa")RequestBody desa,
+                               @Part("toko_alamat")RequestBody alamat,
+                               @Part("toko_deskripsi")RequestBody deskripsi,
+                               @Part("toko_nomor")RequestBody nomor);
+    @GET("api/toko/getlisttoko")
+    Call<ResponseToko>getListToko();
+    @Multipart
+    @POST("api/toko/update")
+    Call<ResponseToko> updateToko(@Part MultipartBody.Part image,
+                               @Part("toko_id")RequestBody pengguna_id,
+                               @Part("toko_nama")RequestBody toko_nama,
+                               @Part("toko_latitude")RequestBody latitude,
+                               @Part("toko_longitude")RequestBody longitude,
+                               @Part("toko_provinsi")RequestBody provinsi,
+                               @Part("toko_kabupaten")RequestBody kabupaten,
+                               @Part("toko_kecamatan")RequestBody kecamatan,
+                               @Part("toko_desa")RequestBody desa,
+                               @Part("toko_alamat")RequestBody alamat,
+                               @Part("toko_deskripsi")RequestBody deskripsi,
+                               @Part("toko_nomor")RequestBody nomor);
+    @FormUrlEncoded
+    @POST("api/toko/update1")
+    Call<ResponseToko> updateToko1(@Field("toko_id")String pengguna_id,
+                                   @Field("toko_nama")String toko_nama,
+                                   @Field("toko_latitude")String latitude,
+                                   @Field("toko_longitude")String longitude,
+                                   @Field("toko_provinsi")String provinsi,
+                                   @Field("toko_kabupaten")String kabupaten,
+                                   @Field("toko_kecamatan")String kecamatan,
+                                   @Field("toko_desa")String desa,
+                                   @Field("toko_alamat")String alamat,
+                                   @Field("toko_deskripsi")String deskripsi,
+                                   @Field("toko_nomor")String nomor);
+    @GET("api/postingan/get")
+    Call<ResponsePostingan> getPostingan();
+    @FormUrlEncoded
+    @POST("api/postingan/tambah")
+    Call<ResponsePostingan> addPostingan(@Field("postingan_id_pengguna")String id_pengguna,
+                                         @Field("postingan_deskripsi")String deskripsi);
+    @FormUrlEncoded
+    @POST("api/komentar/tambah")
+    Call<ResponseKomentar> addKomentar(@Field("komentar_pengguna_id")String pengguna_id,
+                                       @Field("komentar_postingan_id")String postingan_id,
+                                       @Field("komentar_deskripsi")String deskripsi);
+    @FormUrlEncoded
+    @POST("api/komentar/get")
+    Call<ResponseKomentar> getKomentar(@Field("postingan_id")String postingan_id);
+    @FormUrlEncoded
+    @POST("api/report/tambah")
+    Call<ResponsePostingan> addReport(@Field("report_pengguna_id")String pengguna_id,
+                                      @Field("report_alasan")String deskripsi,
+                                      @Field("report_postingan_id") String postingan_id);
 }

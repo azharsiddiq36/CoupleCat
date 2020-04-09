@@ -60,7 +60,10 @@
             android:label="@string/title_activity_my_schedule"
             android:theme="@style/AppTheme" />
         <activity android:name=".Activity.MessageActivity" />
-        <activity android:name=".Activity.AddScheduleActivity"></activity>
+        <activity android:name=".Activity.AddScheduleActivity" />
+        <activity android:name=".Activity.AddMyStore" />
+        <activity android:name=".Activity.PostinganActivity" />
+        <activity android:name=".Activity.KomentarActivity"></activity>
     </application>
 
 </manifest>

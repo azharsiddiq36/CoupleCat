@@ -10,6 +10,7 @@ public class ApiClient {
 
     public static Retrofit retrofit = null;
     public static Retrofit retrofit2 = null;
+    public static Retrofit retrofit3 = null;
     public static Retrofit getApiClient(String BASE_URL){
         if(retrofit==null){
             Gson gson = new GsonBuilder()
@@ -31,5 +32,16 @@ public class ApiClient {
                     .build();
         }
         return retrofit2;
+    }
+    public static Retrofit getLocationApiClient(String BASE_URL){
+        if(retrofit3==null){
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+            retrofit3 = new Retrofit.Builder().baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }
+        return retrofit3;
     }
 }

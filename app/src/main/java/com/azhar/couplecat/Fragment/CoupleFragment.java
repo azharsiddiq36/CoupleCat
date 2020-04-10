@@ -59,6 +59,8 @@ public class CoupleFragment extends Fragment {
     RecyclerView rvCouple;
     @BindView(R.id.lyFilter)
     LinearLayout lyFilter;
+    @BindView(R.id.lyOption)
+    LinearLayout lyOption;
     @BindView(R.id.tvLocation)
     TextView tvLocation;
     LocationManager locationManager;
@@ -69,6 +71,7 @@ public class CoupleFragment extends Fragment {
     String latitude;
     String longitude;
     String jenis;
+    boolean status = false;
     String TAG = "Kambing";
     CoupleAdapter coupleAdapter;
     RecyclerView.LayoutManager layoutManager;
@@ -97,7 +100,29 @@ public class CoupleFragment extends Fragment {
         updateDB();
         loadData();
     }
-
+    @OnClick(R.id.lyFilter)
+    protected void lyFilter(View view){
+        if(status == false){
+            status = true;
+        }
+        else{
+            status = false;
+        }
+        optionStatus();
+    }
+    @OnClick(R.id.btnTerapkan)
+    protected void btnTerapkan(View view){
+        status = false;
+        optionStatus();
+    }
+    private void optionStatus(){
+        if (status == true){
+            lyOption.setVisibility(View.VISIBLE);
+        }
+        else{
+            lyOption.setVisibility(View.GONE);
+        }
+    }
     private void loadData() {
         Call<ResponseCouple> responseCoupleCall = coupleCatInterface.getListCouple(jenis,provinsi,kabupaten,kecamatan,desa);
         responseCoupleCall.enqueue(new Callback<ResponseCouple>() {

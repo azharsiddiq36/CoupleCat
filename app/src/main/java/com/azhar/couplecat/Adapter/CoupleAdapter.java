@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -204,6 +205,11 @@ public class CoupleAdapter extends RecyclerView.Adapter<CoupleAdapter.ViewHolder
                     @Override
                     public void onClick(View view) {
                         Intent i = new Intent(context,MessageActivity.class);
+                        i.putExtra("jenis","0");
+                        i.putExtra("nama",Couple.getPenggunaNama());
+                        i.putExtra("foto",Couple.getPenggunaFoto());
+                        i.putExtra("pengguna_id",Couple.getPenggunaId());
+                        i.putExtra("kontak_id","");
                         context.startActivity(i);
                     }
                 });

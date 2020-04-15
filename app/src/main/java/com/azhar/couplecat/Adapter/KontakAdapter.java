@@ -2,6 +2,7 @@ package com.azhar.couplecat.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.azhar.couplecat.Activity.MessageActivity;
 import com.azhar.couplecat.Model.Kontak;
 import com.azhar.couplecat.Model.ResponseKontak;
 import com.azhar.couplecat.Model.ResponseLastMessage;
@@ -42,6 +44,7 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
     SessionManager sessionManager;
     private List<ResponseKontak> data;
     HashMap<String, String> map;
+    String kontak_id,nama,foto;
     String TAG = "Kambing";
     public KontakAdapter(Context context, ArrayList<Kontak> inputData) {
         this.context = context;
@@ -87,7 +90,7 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
             public void onResponse(Call<ResponseLastMessage> call, Response<ResponseLastMessage> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getStatus() == 200){
-                        String kontak_id = null;
+                        kontak_id = null;
                         if (Kontak.getKontakPenggunaId().equals(map.get(sessionManager.KEY_PENGGUNA_ID))) {
                             kontak_id = Kontak.getKontakPenggunaId2().toString();
                         } else {
@@ -99,6 +102,8 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
                             @Override
                             public void onResponse(Call<ResponsePengguna> call, Response<ResponsePengguna> response) {
                                 if (response.isSuccessful()) {
+                                    nama = response.body().getData().getPenggunaNama();
+                                    foto = response.body().getData().getPenggunaFoto();
                                     holder.tvNama.setText("" + response.body().getData().getPenggunaNama());
                                     String gambar = response.body().getData().getPenggunaFoto();
                                     if (gambar.equals("")) {
@@ -153,6 +158,18 @@ public class KontakAdapter extends RecyclerView.Adapter<KontakAdapter.ViewHolder
                         holder.lyContainer.setVisibility(View.GONE);
                     }
                 }
+                holder.lyContainer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(context,MessageActivity.class);
+                        i.putExtra("kontak_id",Kontak.getKontakId());
+                        i.putExtra("pengguna_id",kontak_id);
+                        i.putExtra("jenis","1");
+                        i.putExtra("nama",nama);
+                        i.putExtra("foto",foto);
+                        context.startActivity(i);
+                    }
+                });
             }
 
             @Override

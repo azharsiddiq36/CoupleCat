@@ -1,6 +1,8 @@
 package com.azhar.couplecat.Rest;
 
 import com.azhar.couplecat.Model.Information;
+import com.azhar.couplecat.Model.ResponseCheckMessage;
+import com.azhar.couplecat.Model.ResponseContact;
 import com.azhar.couplecat.Model.ResponseCouple;
 import com.azhar.couplecat.Model.ResponseKomentar;
 import com.azhar.couplecat.Model.ResponseKontak;
@@ -106,13 +108,32 @@ public interface CoupleCatInterface {
                                        @Field("pasangan_desa")String desa);
     @FormUrlEncoded
     @POST("api/pesan/getconversation")
-    Call<ResponseMessage> getConversation(@Field("chatting_kontak") String chatting_kontak);
+    Call<ResponseMessage> getConversation(@Field("chatting_kontak") String chatting_kontak,
+                                          @Field("pengguna_id")String pengguna_id);
     @FormUrlEncoded
     @POST("api/pesan/lastconversation")
     Call<ResponseLastMessage> getLastConversation(@Field("kontak_id") String kontak_id);
     @FormUrlEncoded
+    @POST("api/pesan/addconversation")
+    Call<ResponseMessage> addMessage(@Field("chatting_kontak") String kontak_id,
+                                     @Field("pengguna1") String pengirim,
+                                     @Field("pengguna2") String penerima,
+                                     @Field("pesan")String pesan);
+    @FormUrlEncoded
+    @POST("api/pesan/check")
+    Call<ResponseCheckMessage> checkMessageChange(@Field("chatting_kontak")String kontak_id);
+    @FormUrlEncoded
     @POST("api/kontak/getkontak")
     Call<ResponseKontak> getKontak(@Field("pengguna_id") String pengguna_id);
+    @FormUrlEncoded
+    @POST("api/kontak/addkontak")
+    Call<ResponseContact> addKontak(@Field("pengguna1")String pengguna1,
+                                    @Field("pengguna2")String pengguna2);
+    @FormUrlEncoded
+    @POST("api/kontak/check")
+    Call<ResponseKontak> checkKontak(@Field("pengguna1")String pengguna1,
+                                   @Field("pengguna2")String pengguna2);
+
     @FormUrlEncoded
     @POST("api/toko/get")
     Call<ResponseStore> getToko(@Field("toko_pengguna_id")String pengguna_id);

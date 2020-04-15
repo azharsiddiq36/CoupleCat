@@ -11,6 +11,7 @@ public class ApiClient {
     public static Retrofit retrofit = null;
     public static Retrofit retrofit2 = null;
     public static Retrofit retrofit3 = null;
+    public static final String URL_RAJA_API = "https://x.rajaapi.com/";
     public static Retrofit getApiClient(String BASE_URL){
         if(retrofit==null){
             Gson gson = new GsonBuilder()
@@ -33,13 +34,11 @@ public class ApiClient {
         }
         return retrofit2;
     }
-    public static Retrofit getLocationApiClient(String BASE_URL){
-        if(retrofit3==null){
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-            retrofit3 = new Retrofit.Builder().baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+    public static Retrofit getClient() {
+        if (retrofit3 == null) {
+            retrofit3 = new Retrofit.Builder()
+                    .baseUrl(URL_RAJA_API)
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit3;

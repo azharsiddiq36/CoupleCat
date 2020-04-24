@@ -4,6 +4,7 @@ import com.azhar.couplecat.Model.Information;
 import com.azhar.couplecat.Model.ResponseCheckMessage;
 import com.azhar.couplecat.Model.ResponseContact;
 import com.azhar.couplecat.Model.ResponseCouple;
+import com.azhar.couplecat.Model.ResponseJadwal;
 import com.azhar.couplecat.Model.ResponseKomentar;
 import com.azhar.couplecat.Model.ResponseKontak;
 import com.azhar.couplecat.Model.ResponseLastMessage;
@@ -199,4 +200,16 @@ public interface CoupleCatInterface {
     Call<ResponsePostingan> addReport(@Field("report_pengguna_id")String pengguna_id,
                                       @Field("report_alasan")String deskripsi,
                                       @Field("report_postingan_id") String postingan_id);
+    @FormUrlEncoded
+    @POST("api/jadwal/tambah")
+    Call<ResponseJadwal> addJadwal(@Field("pengguna2")String penerima,
+                                   @Field("pengguna1")String pengaju,
+                                   @Field("kucing1")String id_kucing,
+                                   @Field("kucing2")String kucing2,
+                                   @Field("jadwal")String jadwal,
+                                   @Field("lokasi")String lokasi);
+    @FormUrlEncoded
+    @POST("api/jadwal/get")
+    Call<ResponseJadwal> getJadwal(@Field("pengguna_id")String id,
+                                   @Field("status")String status);
 }

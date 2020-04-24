@@ -217,6 +217,11 @@ public class CoupleAdapter extends RecyclerView.Adapter<CoupleAdapter.ViewHolder
                     @Override
                     public void onClick(View view) {
                         Intent i = new Intent(context,AddScheduleActivity.class);
+                        i.putExtra("pengguna_id",Couple.getPenggunaId());
+                        i.putExtra("jk",Couple.getKucingJk());
+                        i.putExtra("hari",Couple.getPasanganHari());
+                        i.putExtra("kucing",Couple.getKucingNama());
+                        i.putExtra("kucing_id",Couple.getKucingId());
                         context.startActivity(i);
                     }
                 });

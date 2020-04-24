@@ -1,147 +1,85 @@
 package com.azhar.couplecat.Activity;
-
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-
+import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.azhar.couplecat.Fragment.MyAcceptScheduleFragment;
+import com.azhar.couplecat.Fragment.MyScheduleFragment;
+import com.azhar.couplecat.Fragment.MyWaitingScheduleFragment;
 import com.azhar.couplecat.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MyScheduleActivity extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
-
+    int step = 0;
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
+    MyScheduleFragment myScheduleFragment;
+    MyWaitingScheduleFragment myWaitingScheduleFragment;
+    MyAcceptScheduleFragment myAcceptScheduleFragment;
+    @BindView(R.id.tvAccept)
+    TextView tvAccept;
+    @BindView(R.id.tvAll)
+    TextView tvAll;
+    @BindView(R.id.tvWaiting)
+    TextView tvWaiting;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_schedule);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+        ButterKnife.bind(this);
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        myScheduleFragment = new MyScheduleFragment();
+        myWaitingScheduleFragment = new MyWaitingScheduleFragment();
+        myAcceptScheduleFragment = new MyAcceptScheduleFragment();
+           loadFragment(myScheduleFragment);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my_schedule, menu);
-        return true;
+    @OnClick(R.id.tvAccept)
+    protected void tvAccept(View view){
+        tvAll.setBackgroundColor(Color.TRANSPARENT);
+        tvWaiting.setBackgroundColor(Color.TRANSPARENT);
+        tvAccept.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.bg_button));
+        loadFragment(myScheduleFragment);
+    }
+    @OnClick(R.id.tvWaiting)
+    protected void tvWaiting(View view){
+        tvAccept.setBackgroundColor(Color.TRANSPARENT);
+        tvAll.setBackgroundColor(Color.TRANSPARENT);
+        tvWaiting.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.bg_button));
+        loadFragment(myWaitingScheduleFragment);
+    }
+    @OnClick(R.id.tvAll)
+    protected void tvAll(View view){
+        tvAccept.setBackgroundColor(Color.TRANSPARENT);
+        tvWaiting.setBackgroundColor(Color.TRANSPARENT);
+        tvAll.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.bg_button));
+        loadFragment(myAcceptScheduleFragment);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+    public boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, fragment)
+                    .commit();
             return true;
         }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_my_schedule, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
+        return false;
     }
 }
+

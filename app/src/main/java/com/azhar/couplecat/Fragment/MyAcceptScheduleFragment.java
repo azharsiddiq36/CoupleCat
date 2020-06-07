@@ -60,10 +60,12 @@ public class MyAcceptScheduleFragment extends Fragment {
         responseJadwalCall.enqueue(new Callback<ResponseJadwal>() {
             @Override
             public void onResponse(Call<ResponseJadwal> call, Response<ResponseJadwal> response) {
-                schedule = (ArrayList)response.body().getData();
-                scheduleAdapter = new ScheduleAdapter(getActivity(),schedule);
-                rvSchedule.setAdapter(scheduleAdapter);
-                scheduleAdapter.notifyDataSetChanged();
+                if (response.body().getTotal()>0) {
+                    schedule = (ArrayList) response.body().getData();
+                    scheduleAdapter = new ScheduleAdapter(getActivity(), schedule);
+                    rvSchedule.setAdapter(scheduleAdapter);
+                    scheduleAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

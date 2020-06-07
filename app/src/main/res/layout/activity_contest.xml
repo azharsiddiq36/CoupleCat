@@ -89,7 +89,31 @@
                     android:text="Daftar"
                     android:textAlignment="center" />
             </LinearLayout>
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lyBtnPemesanan"
+                android:background="@drawable/bg_input_edit"
+                android:orientation="vertical"
+                android:padding="5dp">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/whislist"
+                    android:tint="#000000" />
+                <TextView
+                    android:textSize="12sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mregular"
+                    android:text="Pemesanan"
+                    android:textAlignment="center" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
@@ -216,18 +240,19 @@
                             android:fontFamily="@font/mlight"
                             android:gravity="right"
                             android:text="Memberi Makan Ayam"
-
-                            android:textColor="#FFFFFF"
+                            android:id="@+id/tvjud1"
+                            android:textColor="#000000"
                             android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/tvTgl1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:fontFamily="@font/mlight"
                             android:gravity="right"
                             android:text="29 January 2019"
-                            android:textColor="#f7f7f7"
+                            android:textColor="#000000"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -264,18 +289,19 @@
                             android:fontFamily="@font/mlight"
                             android:gravity="right"
                             android:text="Memberi Makan Ayam"
-
-                            android:textColor="#FFFFFF"
+                            android:id="@+id/tvJud2"
+                            android:textColor="#000"
                             android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/tvTgl2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:fontFamily="@font/mlight"
                             android:gravity="right"
                             android:text="29 January 2019"
-                            android:textColor="#f7f7f7"
+                            android:textColor="#000000"
                             android:textSize="14sp" />
 
                     </LinearLayout>

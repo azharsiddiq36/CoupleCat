@@ -20,6 +20,11 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_my_ticket">MyTicketActivity</string>
     <string name="title_activity_my_schedule">MyScheduleActivity</string>
+    <string-array name="jenispembayaran">
+        <item>Pilih Jenis</item>
+        <item>Saldo</item>
+        <item>Upload Resi</item>
+    </string-array>
     <string-array name="catlist">
         <item>Abyssinian</item>
         <item>Aegean</item>

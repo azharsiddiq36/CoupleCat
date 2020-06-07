@@ -1,18 +1,25 @@
 package com.azhar.couplecat.Rest;
 
-import com.azhar.couplecat.Model.Information;
 import com.azhar.couplecat.Model.ResponseCheckMessage;
 import com.azhar.couplecat.Model.ResponseContact;
+import com.azhar.couplecat.Model.ResponseContest;
+import com.azhar.couplecat.Model.ResponseContestDetails;
 import com.azhar.couplecat.Model.ResponseCouple;
 import com.azhar.couplecat.Model.ResponseJadwal;
+import com.azhar.couplecat.Model.ResponseJenisKontes;
 import com.azhar.couplecat.Model.ResponseKomentar;
 import com.azhar.couplecat.Model.ResponseKontak;
 import com.azhar.couplecat.Model.ResponseLastMessage;
 import com.azhar.couplecat.Model.ResponseMessage;
 import com.azhar.couplecat.Model.ResponseMyCat;
+import com.azhar.couplecat.Model.ResponseOneCat;
 import com.azhar.couplecat.Model.ResponsePasangan;
+import com.azhar.couplecat.Model.ResponsePembayaran;
+import com.azhar.couplecat.Model.ResponsePemesanan;
 import com.azhar.couplecat.Model.ResponsePengguna;
 import com.azhar.couplecat.Model.ResponsePostingan;
+import com.azhar.couplecat.Model.ResponseRowPemesanan;
+import com.azhar.couplecat.Model.ResponseSaldo;
 import com.azhar.couplecat.Model.ResponseStore;
 import com.azhar.couplecat.Model.ResponseToko;
 
@@ -212,4 +219,97 @@ public interface CoupleCatInterface {
     @POST("api/jadwal/get")
     Call<ResponseJadwal> getJadwal(@Field("pengguna_id")String id,
                                    @Field("status")String status);
+    @FormUrlEncoded
+    @POST("api/kucing/getone")
+    Call<ResponseOneCat> getCatDetail(@Field("kucing_id")String kucing);
+    @FormUrlEncoded
+    @POST("api/jadwal/acc")
+    Call<ResponseJadwal> accJadwal(@Field("jadwal_id")String id);
+    @FormUrlEncoded
+    @POST("api/jadwal/reject")
+    Call<ResponseJadwal> rejectJadwal(@Field("jadwal_id")String id);
+
+    @GET("api/kontes/getjenis")
+    Call<ResponseJenisKontes> getJenisKontes();
+    //Kontes
+    @GET("api/kontes/get")
+    Call<ResponseContest> getListContest();
+    @FormUrlEncoded
+    @POST("api/kontes/mylist")
+    Call<ResponseContest> getMyContest(@Field("pengguna_id")String id,@Field("status") String status);
+    @FormUrlEncoded
+    @POST("api/kontes/detail")
+    Call<ResponseContestDetails> getDetailContest(@Field("id")String id);
+    @Multipart
+    @POST("api/kontes/add")
+    Call<ResponseContest> addContest(@Part MultipartBody.Part image,
+                                     @Part("id")RequestBody pengguna_id,
+                                     @Part("kontes_nama")RequestBody nama,
+                                     @Part("provinsi")RequestBody provinsi,
+                                     @Part("kabupaten")RequestBody kabupaten,
+                                     @Part("kecamatan")RequestBody kecamatan,
+                                     @Part("desa")RequestBody desa,
+                                     @Part("kuota")RequestBody kuota,
+                                     @Part("durasi")RequestBody durasi,
+                                     @Part("biaya")RequestBody biaya,
+                                     @Part("lokasi")RequestBody alamat,
+                                     @Part("details")RequestBody details,
+                                     @Part("description")RequestBody deskripsi,
+                                     @Part("tanggal")RequestBody tanggal,
+                                     @Part("kontes_jenis")RequestBody jenis,
+                                     @Part("nomor")RequestBody nomor);
+    @FormUrlEncoded
+    @POST("api/pemesanan/add")
+    Call<ResponsePemesanan> addPemesanan(@Field("id") String id,
+                                         @Field("jumlah")String jumlah,
+                                         @Field("total")String total,
+                                         @Field("kontes")String kontes);
+    @FormUrlEncoded
+    @POST("api/pemesanan/getorder")
+    Call<ResponsePemesanan> getPemesanan(@Field("id") String id);
+    @FormUrlEncoded
+    @POST("api/pemesanan/getone")
+    Call<ResponseRowPemesanan> getOneOfPemesanan(@Field("id")String id);
+    @FormUrlEncoded
+    @POST("api/pembayaran/add")
+    Call<ResponsePembayaran> addPembayaran(@Field("pemesanan_id")String pemesanan_id,
+                                           @Field("pengguna_id")String pengguna_id,
+                                           @Field("pembayaran_jumlah")String pembayaran_jumlah,
+                                           @Field("pembayaran_jenis")String pembayaran_jenis,
+                                           @Field("pembayaran_kontes")String pembayaran_kontes);
+    @Multipart
+    @POST("api/pembayaran/add")
+    Call<ResponsePembayaran> addUploadPembayaran(@Part MultipartBody.Part image,
+                                     @Part("pemesanan_id")RequestBody pemesanan,
+                                     @Part("pengguna_id")RequestBody pengguna,
+                                     @Part("pembayaran_jumlah")RequestBody jumlah,
+                                     @Part("pembayaran_jenis")RequestBody jenis,
+                                     @Part("pembayaran_kontes")RequestBody kontes);
+    @FormUrlEncoded
+    @POST("api/pembayaran/getmypayment")
+    Call<ResponsePembayaran> getMyPayment(@Field("id") String id);
+    @Multipart
+    @POST("api/saldo/add")
+    Call<ResponseSaldo> addSaldo(@Part MultipartBody.Part image,
+                                 @Part("id")RequestBody id,
+                                 @Part("jumlah")RequestBody jumlah);
+    @FormUrlEncoded
+    @POST("api/saldo/tariksaldo")
+    Call<ResponseSaldo> tarikSaldo(@Field("id")String id,
+                                   @Field("norek")String norek,
+                                   @Field("bank") String bank,
+                                   @Field("jumlah") String jumlah);
+    @FormUrlEncoded
+    @POST("api/saldo/transfer")
+    Call<ResponseSaldo> transfer(@Field("id") String id,
+                                 @Field("jumlah") String jumlah,
+                                 @Field("kontes")String kontes);
+    @FormUrlEncoded
+    @POST("api/saldo/totalsaldokontes")
+    Call<ResponseSaldo> saldokontes(@Field("id") String id,
+                                    @Field("kontes") String kontes);
+    @FormUrlEncoded
+    @POST("api/saldo/getmycontest")
+    Call<ResponseContest> getlistsaldokontes(@Field("id")String id);
+
 }

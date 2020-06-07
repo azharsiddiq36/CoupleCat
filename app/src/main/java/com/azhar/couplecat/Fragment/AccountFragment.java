@@ -142,6 +142,7 @@ public class AccountFragment extends Fragment {
     @OnClick(R.id.lyBtnMySchedule)
     public void lyBtnMySchedule(View view){
         Intent gotoschedule = new Intent(getActivity(),MyScheduleActivity.class);
+        gotoschedule.putExtra("jumlah",tvNotif.getText().toString());
         startActivity(gotoschedule);
     }
     @OnClick(R.id.lyBtnMyEvent)

@@ -5,6 +5,7 @@
     android:background="#fff"
     android:layout_height="wrap_content"
     android:paddingLeft="25dp"
+    android:fontFamily="@font/mlight"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"

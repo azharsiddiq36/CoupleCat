@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="25dp"
     android:paddingTop="10dp"
+    android:fontFamily="@font/mlight"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"
     />

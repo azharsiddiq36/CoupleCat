@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.NewAccountActivity">
+        tools:context=".Activity.AddContestActivity">
 
         <ImageView
             android:id="@+id/imageView5"
@@ -62,8 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/mlight"
-                android:text="Judul"
-
+                android:text="Nama Kontes"
                 android:textSize="20sp" />
 
             <EditText
@@ -74,7 +73,7 @@
                 android:height="50dp"
                 android:background="@drawable/bg_input_edit"
                 android:fontFamily="@font/mmedium"
-                android:hint="Username"
+                android:hint="Nama"
                 android:lines="1"
                 android:paddingLeft="12dp"
                 android:textSize="20sp" />
@@ -83,19 +82,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/mlight"
-                android:text="Lokasi"
+                android:text="Deskripsi"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/etEmail"
+                android:id="@+id/etDeskripsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:height="50dp"
                 android:background="@drawable/bg_input_edit"
                 android:fontFamily="@font/mmedium"
-                android:hint="Lokasi"
-                android:lines="1"
+                android:hint="Deskripsi"
+                android:maxLines="4"
                 android:paddingLeft="12dp"
                 android:textSize="20sp" />
             <TextView
@@ -103,21 +102,253 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/mlight"
-                android:text="Password"
+                android:text="Syarat dan Ketentuan"
                 android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/etPolicy"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_input_edit"
+                    android:fontFamily="@font/mmedium"
+                    android:maxLines="3"
+                    android:hint="Masukkan Syarat disini ..."
+                    android:layout_toLeftOf="@+id/btnPolicy"
+                    android:paddingLeft="12dp"
+                    android:textSize="18sp" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/btnPolicy"
+                    android:background="@drawable/bg_button"
+                    android:src="@drawable/ic_add_black_24dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/lyDinamic">
+
+            </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/mlight"
+                    android:text="Jenis"
+                    android:textSize="20sp" />
+                <Spinner
+                    android:id="@+id/spJenis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Provinsi"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spProvinsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Kabupaten"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spKabupaten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Kecamatan"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spKecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Desa"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spDesa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Alamat"
+                android:textSize="20sp" />
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/etAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:height="50dp"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:hint="Alamat"
+                android:maxLines="4"
+                android:paddingLeft="12dp"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Tanggal"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="35dp"
+                    android:id="@+id/ivCalendar"
+                    android:src="@drawable/calendar"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textSize="18sp"
+                    android:id="@+id/tvTangal"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/mlight"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Kuota"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/etKuota"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="12dp"
+                android:height="50dp"
                 android:background="@drawable/bg_input_edit"
                 android:fontFamily="@font/mmedium"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:lines="1"
+                android:hint="Kuota"
+                android:maxLines="4"
                 android:paddingLeft="12dp"
                 android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Durasi(Hari)"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/etDurasi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+
+                android:inputType="number"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:hint="Durasi"
+                android:maxLines="4"
+                android:paddingLeft="12dp"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Harga Tiket"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/etBiaya"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:height="50dp"
+                android:inputType="number"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:hint="Harga"
+                android:paddingLeft="12dp"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/mlight"
+                android:text="Nomor Hp"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/etNomor"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:height="50dp"
+                android:background="@drawable/bg_input_edit"
+                android:fontFamily="@font/mmedium"
+                android:hint="Nomor"
+                android:maxLines="4"
+                android:paddingLeft="12dp"
+                android:textSize="20sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/mlight"
+                    android:text="Sampul"
+                    android:textSize="20sp"
+                    android:layout_toLeftOf="@+id/btnUpload"
+                     />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:padding="3dp"
+                    android:id="@+id/btnUpload"
+                    android:background="@drawable/bg_button"
+                    android:src="@drawable/uploadpembayaran"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:visibility="gone"
+                android:id="@+id/prevUpload"
+                android:scaleType="centerCrop"/>
         </LinearLayout>
 
 
@@ -148,6 +379,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_back" />
+
             </LinearLayout>
 
             <Button

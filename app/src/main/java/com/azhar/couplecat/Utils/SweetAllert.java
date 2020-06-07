@@ -8,6 +8,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class SweetAllert {
     Context context;
     SweetAlertDialog pDialog;
+    boolean confirm;
     public SweetAllert(Context context){
         this.context = context;
     }
@@ -34,9 +35,8 @@ public class SweetAllert {
     }
     public void confirmSuccessAllert(){
         new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("Won't be able to recover this file!")
-                .setConfirmText("Yes,delete it!")
+                .setTitleText("Apakah kamu yakin?")
+
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
@@ -52,22 +52,30 @@ public class SweetAllert {
     }
     public void confirmAllert(){
         new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("You won't be able to recover this file!")
-                .setConfirmText("Delete!")
+                .setTitleText("Apakah kamu yakin?")
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
+                        setConfirm(true);
                         sDialog.dismissWithAnimation();
                     }
                 })
                 .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
+                        setConfirm(false);
                         sDialog.dismissWithAnimation();
+
                     }
                 })
                 .show();
+    }
+    public Boolean setConfirm(boolean a) {
+        this.confirm = a;
+        return confirm;
+    }
+    public Boolean getConfirm(){
+        return confirm;
     }
 
 }

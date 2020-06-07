@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.azhar.couplecat.Adapter.ScheduleAdapter;
+import com.azhar.couplecat.Adapter.WaitingScheduleAdapter;
 import com.azhar.couplecat.Model.Jadwal;
 import com.azhar.couplecat.Model.ResponseJadwal;
 import com.azhar.couplecat.Model.ResponsePengguna;
@@ -57,7 +58,7 @@ public class MyWaitingScheduleFragment extends Fragment {
     CoupleCatInterface coupleCatInterface;
     HashMap<String,String> map;
     RecyclerView.LayoutManager layoutManager;
-    ScheduleAdapter scheduleAdapter;
+    WaitingScheduleAdapter scheduleAdapter;
     ArrayList<Jadwal> schedule;
     @Nullable
     @Override
@@ -85,7 +86,7 @@ public class MyWaitingScheduleFragment extends Fragment {
             public void onResponse(Call<ResponseJadwal> call, Response<ResponseJadwal> response) {
                 if (response.body().getStatus() == 200 && response.body().getTotal() != 0) {
                     schedule = (ArrayList) response.body().getData();
-                    scheduleAdapter = new ScheduleAdapter(getActivity(), schedule);
+                    scheduleAdapter = new WaitingScheduleAdapter(getActivity(), schedule);
                     rvSchedule.setAdapter(scheduleAdapter);
                     scheduleAdapter.notifyDataSetChanged();
                 }

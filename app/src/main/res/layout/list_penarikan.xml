@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="90dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/rlPemesanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="80dp"
+            app:riv_corner_radius="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_kucing_1"
+            android:id="@+id/ivBackground"
+            android:layout_height="80dp" />
+        <LinearLayout
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_toLeftOf="@+id/btnBayar"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivBackground"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Judul"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/mregular"
+                android:textSize="14sp"
+                android:id="@+id/tvJudul"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Total Dana : Rp. "
+                android:id="@+id/tvTotal"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/mregular"
+                android:textSize="12sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnTarik"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/bluePrimaryDark"
+            android:fontFamily="@font/mmedium"
+            android:background="@drawable/bg_button"
+            android:layout_width="wrap_content"
+            android:text="Transfer"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

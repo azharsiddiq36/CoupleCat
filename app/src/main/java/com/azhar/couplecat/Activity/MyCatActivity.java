@@ -1,22 +1,14 @@
 package com.azhar.couplecat.Activity;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
 import com.azhar.couplecat.Adapter.MyCatAdapter;
-import com.azhar.couplecat.Model.MyCat;
 import com.azhar.couplecat.Model.ResponseMyCat;
 import com.azhar.couplecat.R;
 import com.azhar.couplecat.Rest.CombineApi;
@@ -39,10 +31,9 @@ public class MyCatActivity extends AppCompatActivity {
     @BindView(R.id.rv_mycat)
     RecyclerView recyclerView;
     MyCatAdapter myCatAdapter;
+
     RecyclerView.LayoutManager layoutManager;
     HashMap<String, String> map;
-    private SearchView searchView = null;
-    private SearchView.OnQueryTextListener queryTextListener;
     ArrayList Kucing = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

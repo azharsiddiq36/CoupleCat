@@ -94,7 +94,6 @@ public class CoupleFragment extends Fragment {
     ArrayList<ApiLocation> kabupatenArray = new ArrayList<>();
     ArrayList<ApiLocation> kecamatanArray = new ArrayList<>();
     ArrayList<ApiLocation> desaArray = new ArrayList<>();
-
     String [] listprovinsi,listkabupaten,listdesa,listkecamatan;
     @Nullable
     @Override

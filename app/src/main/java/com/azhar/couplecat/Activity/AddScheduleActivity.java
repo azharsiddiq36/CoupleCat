@@ -58,11 +58,11 @@ public class AddScheduleActivity extends AppCompatActivity implements
 
     DatePickerDialog datePickerDialog;
     //    TimePickerDialog timePickerDialog ;
-    int Year, Month, Day, Hour, Minute;
-    String jenis,idpenerima,hari,kucing,date;
+    int Year, Month, Day;
+    String jenis, idpenerima, hari, kucing, date;
     Calendar calendar;
     List<MyCat> kucingArrayList = new ArrayList<>();
-    String bagi_hari [];
+    String bagi_hari[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,20 +81,18 @@ public class AddScheduleActivity extends AppCompatActivity implements
         coupleCatInterface = CombineApi.getApiService();
         loadActvCat();
         calendar = Calendar.getInstance();
-        Year = calendar.get(Calendar.YEAR) ;
+        Year = calendar.get(Calendar.YEAR);
         Month = calendar.get(Calendar.MONTH);
         Day = calendar.get(Calendar.DAY_OF_MONTH);
-        Hour = calendar.get(Calendar.HOUR_OF_DAY);
-        Minute = calendar.get(Calendar.MINUTE);
+
     }
 
     private void loadActvCat() {
 
-        if (jenis.equals("betina")){
+        if (jenis.equals("betina")) {
             actvBetina.setText(kucing);
             actvBetina.setFocusable(false);
-        }
-        else{
+        } else {
             actvJantan.setText(kucing);
             actvJantan.setFocusable(false);
 
@@ -113,10 +111,9 @@ public class AddScheduleActivity extends AppCompatActivity implements
                 CACKucingAdapter adapter = new CACKucingAdapter(AddScheduleActivity.this,
                         R.layout.activity_add_schedule,
                         kucingArrayList);
-                if (jenis.equals("betina")){
-                actvJantan.setAdapter(adapter);
-                }
-                else{
+                if (jenis.equals("betina")) {
+                    actvJantan.setAdapter(adapter);
+                } else {
                     actvBetina.setAdapter(adapter);
                 }
 
@@ -127,7 +124,7 @@ public class AddScheduleActivity extends AppCompatActivity implements
 
             }
         });
-        
+
     }
 
     @OnClick(R.id.ivCalendar)
@@ -139,38 +136,52 @@ public class AddScheduleActivity extends AppCompatActivity implements
         Calendar min_date_c = Calendar.getInstance();
         datePickerDialog.setMinDate(min_date_c);
         Calendar max_date_c = Calendar.getInstance();
-        max_date_c.set(Calendar.YEAR, Year+5);
+        max_date_c.set(Calendar.YEAR, Year + 5);
         datePickerDialog.setMaxDate(max_date_c);
-        HashMap<Integer,Boolean> availableday = new HashMap<>();
-        availableday.put(1,false);//minggu
-        availableday.put(2,false);//senin
-        availableday.put(3,false);//selasa
-        availableday.put(4,false);//rabu
-        availableday.put(5,false);//kamis
-        availableday.put(6,false);//jumat
-        availableday.put(7,false);//sabtu
-        for(int i = 0;i<bagi_hari.length;i++){
-            switch (bagi_hari[i].toLowerCase()){
-                case "minggu": availableday.put(1,true);break;
-                case "senin": availableday.put(2,true);break;
-                case "selasa": availableday.put(3,true);break;
-                case "rabu": availableday.put(4,true);break;
-                case "kamis": availableday.put(5,true);break;
-                case "jumat": availableday.put(6,true);break;
-                case "sabtu": availableday.put(7,true);break;
+        HashMap<Integer, Boolean> availableday = new HashMap<>();
+        availableday.put(1, false);//minggu
+        availableday.put(2, false);//senin
+        availableday.put(3, false);//selasa
+        availableday.put(4, false);//rabu
+        availableday.put(5, false);//kamis
+        availableday.put(6, false);//jumat
+        availableday.put(7, false);//sabtu
+        for (int i = 0; i < bagi_hari.length; i++) {
+            switch (bagi_hari[i].toLowerCase()) {
+                case "minggu":
+                    availableday.put(1, true);
+                    break;
+                case "senin":
+                    availableday.put(2, true);
+                    break;
+                case "selasa":
+                    availableday.put(3, true);
+                    break;
+                case "rabu":
+                    availableday.put(4, true);
+                    break;
+                case "kamis":
+                    availableday.put(5, true);
+                    break;
+                case "jumat":
+                    availableday.put(6, true);
+                    break;
+                case "sabtu":
+                    availableday.put(7, true);
+                    break;
 
             }
         }
         for (Calendar loopdate = min_date_c; min_date_c.before(max_date_c); min_date_c.add(Calendar.DATE, 1), loopdate = min_date_c) {
             int dayOfWeek = loopdate.get(Calendar.DAY_OF_WEEK);
-            for (int i = 0 ;i<availableday.size();i++){
-                if (dayOfWeek == (i+1) && availableday.get(i+1) == false) {
-                    Calendar[] disabledDays =  new Calendar[1];
+            for (int i = 0; i < availableday.size(); i++) {
+                if (dayOfWeek == (i + 1) && availableday.get(i + 1) == false) {
+                    Calendar[] disabledDays = new Calendar[1];
                     disabledDays[0] = loopdate;
                     datePickerDialog.setDisabledDays(disabledDays);
-                }                
+                }
             }
-            
+
         }
         datePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
@@ -185,17 +196,15 @@ public class AddScheduleActivity extends AppCompatActivity implements
     }
 
 
-
     @OnClick(R.id.btnJadwal)
     protected void btnJadwal(View view) {
         String namakucing = null;
-        if (jenis.equals("betina")){
+        if (jenis.equals("betina")) {
             namakucing = actvJantan.getText().toString();
-        }
-        else{
+        } else {
             namakucing = actvBetina.getText().toString();
         }
-        Log.d("kumbang", "btnJadwal: "+namakucing);
+        Log.d("kumbang", "btnJadwal: " + namakucing);
         Call<ResponseJadwal> responseJadwalCall = coupleCatInterface.addJadwal(
                 map.get(sessionManager.KEY_PENGGUNA_ID),
                 idpenerima,
@@ -203,17 +212,16 @@ public class AddScheduleActivity extends AppCompatActivity implements
                 namakucing,
                 date,
                 etLokasi.getText().toString()
-                );
+        );
         responseJadwalCall.enqueue(new Callback<ResponseJadwal>() {
             @Override
             public void onResponse(Call<ResponseJadwal> call, Response<ResponseJadwal> response) {
-                if (response.body().getStatus() == 200){
-                    Intent i = new Intent(AddScheduleActivity.this,MyScheduleActivity.class);
+                if (response.body().getStatus() == 200) {
+                    Intent i = new Intent(AddScheduleActivity.this, MyScheduleActivity.class);
                     startActivity(i);
                     finish();
-                }
-                else{
-                    Toast.makeText(AddScheduleActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddScheduleActivity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -227,40 +235,78 @@ public class AddScheduleActivity extends AppCompatActivity implements
 
     @Override
     public void onDateSet(DatePickerDialog view, int yearnow, int monthOfYear, int dayOfMonth) {
-        date = yearnow+"-"+(monthOfYear+1)+"-"+dayOfMonth;
+        date = yearnow + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
 
         String bulan = null;
-        switch (String.valueOf(monthOfYear+1)){
-            case "1" : bulan = "Januari";break;
-            case "2" : bulan = "Februari";break;
-            case "3" : bulan = "Maret";break;
-            case "4" : bulan = "April";break;
-            case "5": bulan = "Mei";break;
-            case "6": bulan = "Juni";break;
-            case "7": bulan = "Juli";break;
-            case "8": bulan = "Agustus";break;
-            case "9": bulan = "September";break;
-            case "10" : bulan = "Oktober";break;
-            case "11" : bulan = "November";break;
-            case "12" : bulan = "Desember";break;
+        switch (String.valueOf(monthOfYear + 1)) {
+            case "1":
+                bulan = "Januari";
+                break;
+            case "2":
+                bulan = "Februari";
+                break;
+            case "3":
+                bulan = "Maret";
+                break;
+            case "4":
+                bulan = "April";
+                break;
+            case "5":
+                bulan = "Mei";
+                break;
+            case "6":
+                bulan = "Juni";
+                break;
+            case "7":
+                bulan = "Juli";
+                break;
+            case "8":
+                bulan = "Agustus";
+                break;
+            case "9":
+                bulan = "September";
+                break;
+            case "10":
+                bulan = "Oktober";
+                break;
+            case "11":
+                bulan = "November";
+                break;
+            case "12":
+                bulan = "Desember";
+                break;
         }
-        Log.d("kambing", "onDateSet: "+(Month+1));
+        Log.d("kambing", "onDateSet: " + (Month + 1));
         Toast.makeText(AddScheduleActivity.this, date, Toast.LENGTH_LONG).show();
         SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE");
-        Date datee = new Date (yearnow, monthOfYear, dayOfMonth-1);
+        Date datee = new Date(yearnow, monthOfYear, dayOfMonth - 1);
         String dayOfWeek = simpledateformat.format(datee);
         String hari = null;
-        switch (dayOfWeek.toLowerCase()){
-            case "sunday": hari = "Minggu";break;
-            case "monday": hari = "Senin";break;
-            case "tuesday": hari = "Selasa";break;
-            case "wednesday": hari = "Rabu";break;
-            case "thursday": hari = "Kamis";break;
-            case "friday": hari = "Jum'at";break;
-            case "saturday": hari = "Sabtu";break;
+        switch (dayOfWeek.toLowerCase()) {
+            case "sunday":
+                hari = "Minggu";
+                break;
+            case "monday":
+                hari = "Senin";
+                break;
+            case "tuesday":
+                hari = "Selasa";
+                break;
+            case "wednesday":
+                hari = "Rabu";
+                break;
+            case "thursday":
+                hari = "Kamis";
+                break;
+            case "friday":
+                hari = "Jum'at";
+                break;
+            case "saturday":
+                hari = "Sabtu";
+                break;
         }
 
-        tvTanggal.setText(hari+", "+dayOfMonth+" "+bulan+" "+yearnow);
+        tvTanggal.setText(hari + ", " + dayOfMonth + " " + bulan + " " + yearnow);
 
     }
 

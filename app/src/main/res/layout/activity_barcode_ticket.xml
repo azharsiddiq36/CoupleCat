@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_overlay_splash"
+    android:layout_height="match_parent"
+    tools:context=".Activity.BarcodeTicketActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/mmedium"
+        android:text="Ticket QR Code"
+        android:textColor="@color/bluePrimaryDark"
+        android:textSize="24sp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

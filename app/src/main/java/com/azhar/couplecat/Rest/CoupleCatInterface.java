@@ -68,7 +68,6 @@ public interface CoupleCatInterface {
     @POST("api/fotodiri/pengguna")
     Call<ResponsePengguna> uploadPersonalPhoto(@Part MultipartBody.Part image,
                                                @Part("pengguna_id") RequestBody pengguna_id);
-
     @FormUrlEncoded
     @POST("api/update1/pengguna")
     Call<ResponsePengguna> updateProfile1(@Field("pengguna_id") String id,

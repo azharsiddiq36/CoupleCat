@@ -2,6 +2,7 @@ package com.azhar.couplecat.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.azhar.couplecat.Activity.MainActivity;
+import com.azhar.couplecat.Fragment.InformationFragment;
+import com.azhar.couplecat.Model.Information;
 import com.azhar.couplecat.R;
 
 
@@ -54,7 +58,8 @@ public class SliderAdapter extends
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
+                Fragment fragment = new InformationFragment();
+                ((MainActivity)context).loadFragment(fragment);
             }
         });
         for (int i = 0;i<position;i++){

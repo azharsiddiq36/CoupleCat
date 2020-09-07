@@ -8,8 +8,8 @@ public class CombineApi {
 //    public static final String BASE_URL = "http://192.168.43.201/anabul/";
 //    public static final String img_url = "http://192.168.43.201/anabul/assets/img/upload/";
 
-    public static final String BASE_URL = "http://anabul.cumaweb.site/";
-    public static final String img_url = "http://anabul.cumaweb.site/assets/img/upload/";
+    public static final String BASE_URL = "http://azharsiddiq.site/";
+    public static final String img_url = "http://azharsiddiq.site/assets/img/upload/";
     public static final String THE_CAT_URL = "https://api.thecatapi.com/v1/";
     public static final String LOCATION_URL = "https://x.rajaapi.com/";
     public static CoupleCatInterface getApiService(){

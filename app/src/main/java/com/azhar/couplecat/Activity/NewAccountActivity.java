@@ -3,6 +3,7 @@ package com.azhar.couplecat.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -74,7 +75,7 @@ public class NewAccountActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponsePengguna> call, Throwable t) {
-
+                Log.d("kambing", "onFailure: "+t.toString());
             }
         });
 

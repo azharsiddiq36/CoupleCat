@@ -60,7 +60,8 @@ public class HomeFragment extends Fragment {
         sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
             @Override
             public void onIndicatorClicked(int position) {
-                sliderView.setCurrentPagePosition(position);
+                Fragment fragment = new InformationFragment();
+                ((MainActivity)getActivity()).loadFragment(fragment);
             }
         });
     }
@@ -68,5 +69,15 @@ public class HomeFragment extends Fragment {
     protected void lyPostingan(View view){
         Intent i = new Intent(getContext(),PostinganActivity.class);
         startActivity(i);
+    }
+    @OnClick(R.id.lyChat)
+    protected void lyChat(View view){
+        Fragment fragment = new ChatFragment();
+        ((MainActivity)getActivity()).loadFragment(fragment);
+    }
+    @OnClick(R.id.lyAcc)
+    protected void lyAcc(View view){
+        Fragment fragment = new AccountFragment();
+        ((MainActivity)getActivity()).loadFragment(fragment);
     }
 }

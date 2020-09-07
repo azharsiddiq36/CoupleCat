@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -61,9 +62,16 @@ public class MyWalletActivity extends AppCompatActivity {
         responsePenggunaCall.enqueue(new Callback<ResponsePengguna>() {
             @Override
             public void onResponse(Call<ResponsePengguna> call, Response<ResponsePengguna> response) {
-                if (response.body().getStatus().equals("200")){
-                    tvTotal.setText("Rp. "+response.body().getData().getPenggunaSaldo());
+                int status = response.body().getStatus();
+                if (status == 200) {
+                    tvTotal.setText("Rp. " + response.body().getData().getPenggunaSaldo().toString());
                 }
+                else{
+                    Log.d("kambing", "onResponse: "+response.body().getMessage()+","+response.body().getStatus());
+                }
+//                if (response.body().getStatus().equals("200")){
+//                    tvTotal.setText("Rp. "+response.body().getData().getPenggunaSaldo());
+//                }
             }
 
             @Override
